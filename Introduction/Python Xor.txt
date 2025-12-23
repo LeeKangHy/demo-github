@@ -1,0 +1,49 @@
+Python có thể xor 2 kiểu dữ liệu dạng bytes với nhau (và cho ra 1 bytes )
+
+✅ 1. String (hay bytes) XOR với string (bytes) cùng độ dài
+
+Khi bạn XOR hai chuỗi byte cùng độ dài, thì XOR theo từng byte:
+
+result[i] = byte1[i] XOR byte2[i]
+
+
+Ví dụ:
+
+a = b"\x10\x20\x30"
+b = b"\x01\x02\x03"
+
+c = bytes([a[i] ^ b[i] for i in range(len(a))])
+
+✅ 2. String XOR với một số (1 byte)
+
+Nếu bạn XOR một chuỗi byte với một số, thì số đó được dùng để XOR với mỗi byte trong chuỗi:
+
+result[i] = byte_string[i] XOR number
+
+
+Ví dụ:
+
+s = b"\x10\x20\x30"
+k = 0x55   # một byte
+
+c = bytes([x ^ k for x in s])
+
+📌 Lưu ý quan trọng
+
+Số bạn XOR phải nằm trong 0–255, vì mỗi byte chỉ có giá trị 1 byte.
+
+🌟 Bonus: Repeating-key XOR (khóa dài hơn 1 byte nhưng ngắn hơn plaintext)
+
+Đây là dạng bạn gặp trong bài CTF.
+
+Nếu key dài K byte, plaintext dài N byte:
+
+Ta XOR từng byte plaintext với key theo chu kỳ:
+
+result[i] = plaintext[i] XOR key[i % len(key)]
+
+
+Python:
+
+cipher = bytes([p ^ key[i % len(key)] for i, p in enumerate(plain)])
+

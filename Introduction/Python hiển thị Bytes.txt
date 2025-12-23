@@ -1,0 +1,61 @@
+1. BẢN CHẤT THẬT: bytes chứa số, không phải ký tự
+
+Ví dụ:
+
+s = b"ABC"
+
+
+Thực chất bên trong:
+
+65 66 67
+
+
+Không có ký tự nào trong bộ nhớ, chỉ có các số.
+
+🔥 2. Python HIỂN THỊ bytes như thế nào?
+
+Python cố gắng biểu diễn byte dạng dễ đọc:
+
+Nếu byte có giá trị 32–126 (ký tự ASCII in được), nó hiển thị như ký tự
+
+Nếu byte nằm ngoài phạm vi ASCII in được, Python dùng escape dạng \x??
+
+Ví dụ:
+
+print(b"ABC")
+
+
+→ Python hiển thị:
+
+b'ABC'
+
+
+Vì 65, 66, 67 là các ký tự ASCII in được.
+
+Nhưng thử byte không in được:
+
+print(b"\x01\x02\x99")
+
+
+Python hiển thị:
+
+b'\x01\x02\x99'
+
+
+Không chuyển thành ký tự.
+
+🔥 3. Quan trọng: bytes[index] vẫn trả về số, không phải ký tự
+s = b"A"
+print(s[0])
+
+
+→ 65, không phải 'A'.
+
+Nếu bạn muốn ký tự:
+
+chr(s[0])  # 'A'
+
+🔥 4. Tóm tắt cực ngắn
+Cái gì?	          Bản chất	           Python hiển thị
+bytes	          số 0–255	           ký tự ASCII nếu in được
+str	              ký tự Unicode	       ký tự Unicode
