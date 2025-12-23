@@ -1,0 +1,6 @@
+""" 
+Aim : Factoring N = 510143758735509025530880200653196460532653147 into 2 prime p and q
+Trick : Use web https://factordb.com
+Academic : Learn algorithm from easy to hard (Trial Division ,Fermat’s Factorization, Pollard’s Rho Algorithm, Elliptic Curve Method, General Number Field Sieve)  
+"""
+
